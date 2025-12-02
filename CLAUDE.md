@@ -4,7 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Reference Documentation
 
-For Payload Ecommerce plugin documentation, fetch: https://github.com/payloadcms/payload/tree/main/docs/ecommerce
+**MANDATORY:** Always search Astro docs via `mcp__astro-docs__search_astro_docs` before implementing Astro-related features.
+
+**MANDATORY:** Always fetch Payload Ecommerce docs before implementing ecommerce features:
+- Overview: https://raw.githubusercontent.com/payloadcms/payload/main/docs/ecommerce/overview.mdx
+- Frontend (useCart, EcommerceProvider): https://raw.githubusercontent.com/payloadcms/payload/main/docs/ecommerce/frontend.mdx
+- Plugin config: https://raw.githubusercontent.com/payloadcms/payload/main/docs/ecommerce/plugin.mdx
+- Payments: https://raw.githubusercontent.com/payloadcms/payload/main/docs/ecommerce/payments.mdx
+- Advanced: https://raw.githubusercontent.com/payloadcms/payload/main/docs/ecommerce/advanced.mdx
 
 ## Commands
 
