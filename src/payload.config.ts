@@ -1,6 +1,7 @@
 // storage-adapter-import-placeholder
 import { sqliteD1Adapter } from '@payloadcms/db-d1-sqlite' // database-adapter-import
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { ecommercePlugin } from '@payloadcms/plugin-ecommerce'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -10,6 +11,14 @@ import { r2Storage } from '@payloadcms/storage-r2'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { productsOverride } from './collections/Products'
+import {
+  adminOnly,
+  adminOnlyFieldAccess,
+  adminOrCustomerOwner,
+  adminOrPublishedStatus,
+  customerOnlyFieldAccess,
+} from './access'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -43,6 +52,23 @@ export default buildConfig({
     r2Storage({
       bucket: cloudflare.env.R2,
       collections: { media: true },
+    }),
+    ecommercePlugin({
+      access: {
+        adminOnly,
+        adminOnlyFieldAccess,
+        adminOrCustomerOwner,
+        adminOrPublishedStatus,
+        customerOnlyFieldAccess,
+      },
+      customers: { slug: 'users' },
+      products: {
+        productsCollectionOverride: productsOverride,
+      },
+      // carts: {},
+      // orders: {},
+      // addresses: {},
+      // transactions: {},
     }),
   ],
 })
